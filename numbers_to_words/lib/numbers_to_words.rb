@@ -90,20 +90,68 @@ def chop_manual(user_value)
     chop_array.push(user_string[0,3])
   elsif user_string.length == 4
     chop_array.push(user_string[0])
-    chop_array.push(user_string[1,4])
+    chop_array.push(user_string[1,3])
   elsif user_string.length == 5
     chop_array.push(user_string[0,2])
-    chop_array.push(user_string[2,5])
+    chop_array.push(user_string[2,3])
   elsif user_string.length == 6
     chop_array.push(user_string[0,3])
-    chop_array.push(user_string[3,6])
+    chop_array.push(user_string[3,3])
   elsif user_string.length == 7
     chop_array.push(user_string[0])
     chop_array.push(user_string[1,3])
-    chop_array.push(user_string[4,7])
+    chop_array.push(user_string[4,3])
+  elsif user_string.length == 8
+    chop_array.push(user_string[0,2])
+    chop_array.push(user_string[2,3])
+    chop_array.push(user_string[5,3])
+  elsif user_string.length == 9
+    chop_array.push(user_string[0,3])
+    chop_array.push(user_string[3,3])
+    chop_array.push(user_string[6,3])
+  elsif user_string.length == 10
+    chop_array.push(user_string[0])
+    chop_array.push(user_string[1,3])
+    chop_array.push(user_string[4,3])
+    chop_array.push(user_string[7,3])
   end
+  output_array = []
+  chop_array.each do |array_element|
+    output_array.push(array_element.to_i)
+  end
+  return output_array
 end
 
+def final_output(user_value)
+  temp_array = chop_manual(user_value)
+  final_words = []
+  if temp_array.length == 4
+    final_words.push(numbers_to_words(temp_array[0]))
+    final_words.push("billion")
+    final_words.push(numbers_to_words(temp_array[1]))
+    final_words.push("million")
+    final_words.push(numbers_to_words(temp_array[2]))
+    final_words.push("thousand")
+    final_words.push(numbers_to_words(temp_array[3]))
+  elsif temp_array.length == 3
+    final_words.push(numbers_to_words(temp_array[0]))
+    final_words.push("million")
+    final_words.push(numbers_to_words(temp_array[1]))
+    final_words.push("thousand")
+    final_words.push(numbers_to_words(temp_array[2]))
+  elsif temp_array.length == 2
+    final_words.push(numbers_to_words(temp_array[0]))
+    final_words.push("thousand")
+    final_words.push(numbers_to_words(temp_array[1]))
+  else
+    final_words.push(numbers_to_words(temp_array[0]))
+  end
+  return final_words
+  # index = 0
+  # index.times() do
+  #   numbers_to_words(temp_array[-(index+1)])
+  # end
+end
 
 
 
