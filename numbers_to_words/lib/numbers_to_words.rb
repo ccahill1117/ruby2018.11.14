@@ -146,7 +146,7 @@ def final_output(user_value)
   else
     final_words.push(numbers_to_words(temp_array[0]))
   end
-  return final_words
+  return final_words.join(' ').chomp(" zero")
   # index = 0
   # index.times() do
   #   numbers_to_words(temp_array[-(index+1)])
